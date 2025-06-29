@@ -1,0 +1,291 @@
+/* General Styling & Colors */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    direction: rtl; /* Right-to-left for Arabic */
+    text-align: right;
+    
+    /* --- New background properties --- */
+    background-image: url('images/background.jpg'); /* New path to the image */
+    background-size: cover; /* Cover the entire screen */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+    background-color: #f5f7f9; /* Fallback color */
+    position: relative; /* For the overlay */
+}
+
+/* Add an overlay to make text more readable */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75); /* White transparent overlay */
+    z-index: -1;
+}
+
+/* Ensure the content is above the overlay */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #1e3a8a; /* Dark blue */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Summary Dashboard Styling */
+.summary-dashboard {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    flex: 1;
+}
+
+.summary-card h2 {
+    font-size: 16px;
+    margin: 0 0 10px 0;
+    color: #666;
+}
+
+.summary-card p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.debt-to-me p {
+    color: #22c55e; /* Green for positive */
+}
+
+.debt-on-me p {
+    color: #ef4444; /* Red for negative */
+}
+
+/* Add Button Styling */
+.add-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #10b981; /* Teal green */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    transition: background-color 0.3s;
+    margin-bottom: 25px;
+}
+
+.add-button:hover {
+    background-color: #059669;
+}
+
+/* Debt List Styling */
+.debt-list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.debt-list-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.debt-list-card h3 {
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.debt-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.debt-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eef2f5;
+}
+
+.debt-item:last-child {
+    border-bottom: none;
+}
+
+.debt-info {
+    flex-grow: 1;
+}
+
+.debt-item .person-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.debt-item .amount {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.debt-item.to-me .amount {
+    color: #16a34a; /* Darker green */
+}
+
+.debt-item.on-me .amount {
+    color: #d94040; /* Darker red */
+}
+
+.debt-item .description, .debt-item .date {
+    font-size: 12px;
+    color: #777;
+    margin-top: 4px;
+}
+
+.debt-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.debt-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+}
+
+.debt-actions button:hover {
+    color: #333;
+}
+
+/* Styling for the new Pay button */
+.debt-actions .pay-btn {
+    color: #28a745; /* Green color for pay button */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Style for paid debts */
+.debt-item.paid {
+    opacity: 0.6; /* Make it transparent */
+    text-decoration: line-through; /* Add a line through the text */
+}
+
+.debt-item.paid .amount {
+    color: #999 !important; /* Change amount color to gray */
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: right;
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #1e3a8a;
+}
+
+#debt-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#debt-form input,
+#debt-form select,
+#debt-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9fafb;
+}
+
+#debt-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#save-debt-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2563eb; /* Blue */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#save-debt-btn:hover {
+    background-color: #1d4ed8;
+}
